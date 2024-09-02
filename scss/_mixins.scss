@@ -6,7 +6,7 @@
     &_title {
       &_text {
         display: inline;
-        color: $color-white;
+        color: $color-content;
         font-size: 23px;
         padding: 10px 0;
         position: relative;
@@ -25,6 +25,9 @@
           left: 50%;
           transform: translateX(-50%);
         }
+        @media screen and (max-width: 576px) {
+          font-size: 19px;
+         }
       }
     }
   }
@@ -52,5 +55,6 @@
   row-gap: 10px;
   padding: 25px;
   border-radius: 20px;
-  box-shadow: 0 0 15px 3px rgba(0, 0, 0, 0.4);
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
 }

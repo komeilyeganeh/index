@@ -7,12 +7,12 @@
 // For mozila
 *::-moz-selection {
   background-color: $color-red-light;
-  color: $color-white;
+  color: $color-content;
 }
 // For chrome
 *::selection {
   background-color: $color-red-light;
-  color: $color-white;
+  color: $color-content;
 }
 
 ::-webkit-scrollbar {
@@ -47,29 +47,17 @@ body {
   transition: .5s ease-in;
   span {
     position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: $color-red-light;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    animation: effect-loading 1.4s linear infinite;
-    &:nth-child(2) {
-      animation-delay: .2s;
-    }
-    &:nth-child(3) {
-      animation-delay: .4s;
-    }
-    &:nth-child(4) {
-      animation-delay: .6s;
-    }
+    outline: 4px dashed $color-red-light;
+    animation: effect-loading 3s linear infinite;
     @keyframes effect-loading {
-      0% {
-        transform: translateY(0);
+      from {
+        transform: rotate(0deg);
       }
-      50% {
-        transform: translateY(-60px);
-      }
-      100% {
-        transform: translateY(0);
+      to {
+        transform: rotate(360deg);
       }
     }
   }
@@ -94,7 +82,7 @@ body {
   @include section;
 
   .side_left {
-    width: 30%;
+    width: 28%;
     height: 100%;
     background-color: $color-primary;
     border-radius: 25px;
@@ -111,12 +99,15 @@ body {
         width: 100%;
         border-radius: 50%;
         object-fit: cover;
-        outline: 2px dashed $color-primary-2;
       }
 
       @media screen and (max-width: 991px) {
         display: flex;
         align-items: center;
+       }
+       @media screen and (max-width: 556px) {
+        width: 90px;
+        height: 90px;
        }
     }
     .profile_info {
@@ -126,16 +117,13 @@ body {
       align-items: center;
       row-gap: 15px;
       .profile_title {
-        color: $color-white;
+        color: $color-content;
         @media screen and (max-width: 1120px) {
           font-size: 26px;
         }
         @media screen and (max-width: 576px) {
-          font-size: 21px;
+          font-size: 18px;
         }
-        @media screen and (max-width: 400px) {
-          font-size: 19px;
-         }
       }
       @media screen and (max-width: 400px) {
         align-items: flex-end;
@@ -165,9 +153,9 @@ body {
           a {
             display: block;
             padding: 5px 25px;
-            color: $color-white;
+            color: $color-content;
             font-size: 14px;
-            transition: 0.2s ease-in;
+            transition: 0.1s ease-in;
             &:hover {
               transform: scale(1.2);
               color: $color-red-light;
@@ -187,8 +175,8 @@ body {
           display: inline-block;
           width: 100%;
           height: 2px;
-          background-color: $color-white;
-          transition: .3s ease-in;
+          background-color: $color-content;
+          transition: .1s linear;
           border-radius: 20px;
           &:first-child {
             transform: rotate(45deg);
@@ -203,9 +191,11 @@ body {
       }
       @media screen and (max-width: 991px) {
        position: absolute;
-       top: -100%;
+       top: -50%;
        left: 0;
        width: 100%;
+       opacity: 0;
+       visibility: hidden;
        align-items: center;
        z-index: 1000;
        background-color: $color-primary;
@@ -215,6 +205,8 @@ body {
        box-shadow: 0 20px 15px 3px rgba(0, 0, 0, 0.4);
       }
       &.active {
+        visibility: visible;
+        opacity: 1;
         top: 0;
       }
     }
@@ -227,7 +219,7 @@ body {
         justify-content: center;
         width: 30px;
         height: 30px;
-        background-color: $color-white;
+        background-color: $color-content;
         border-radius: 50%;
         transition: all 0.2s ease-in;
         .fab {
@@ -256,7 +248,7 @@ body {
         display: inline-block;
         width: 100%;
         height: 2px;
-        background-color: $color-white;
+        background-color: $color-content;
         transition: .3s ease-in;
         border-radius: 20px;
         &:first-child {
@@ -290,7 +282,7 @@ body {
     
   }
   .side_right {
-    width: calc(100% - 31%);
+    width: calc(100% - 29%);
     height: 100%;
     border-radius: 25px;
     overflow-x: hidden;
@@ -305,7 +297,7 @@ body {
         &_text {
           font-size: 15px;
           line-height: 32px;
-          color: $color-white;
+          color: $color-gray;
         }
       }
       &_info {
@@ -319,7 +311,7 @@ body {
             &:first-child {
               color: $color-red-light;
             }
-            color: $color-white;
+            color: $color-content;
             font-size: 15px;
             @media screen and (max-width: 576px) {
               font-size: 13px;
@@ -341,7 +333,7 @@ body {
           padding: 10px;
           background-color: $color-red-light;
           border-radius: 20px;
-          color: $color-white;
+          color: $color-content;
         }
       }
     }
@@ -352,16 +344,14 @@ body {
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 20px;
         .skills_item {
           display: inline-block;
           padding: 10px;
           border-radius: 20px;
-          color: $color-white;
+          color: $color-gray;
           font-size: 14px;
-          font-weight: bold;
-          box-shadow: 0 0 12px 2px rgba(0,0,0,.4);
-
+          border-bottom: 1px solid $color-red-light;
           @media screen and (max-width: 576px) {
             font-size: 13px;
           }
@@ -383,18 +373,19 @@ body {
           .experience_title {
            @include alignCards;
             h3 {
-              color: $color-white;
+              color: $color-content;
             }
             span {
-              color: $color-white;
+              color: $color-gray;
               font-size: 14px;
             }
           }
           .experience_job {
             color: $color-red-light;
+            font-size: 13px;
           }
           .experience_desc {
-            color: #aaa;
+            color: $color-gray;
             font-size: 15px;
             line-height: 25px;
           }
@@ -415,21 +406,22 @@ body {
         .education_title {
           @include alignCards;
           h3 {
-            color: $color-white;
+            color: $color-content;
             @media screen and (max-width: 576px) {
               font-size: 17px;
             }
           }
           span {
-            color: $color-white;
+            color: $color-content;
             font-size: 14px;
           }
         }
         .education_field {
           color: $color-red-light;
+          font-size: 13px;
         }
         .education_uni {
-          color: #aaa;
+          color: $color-gray;
           font-size: 15px;
           line-height: 25px;
         }
